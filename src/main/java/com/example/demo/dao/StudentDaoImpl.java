@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Component
 public class StudentDaoImpl implements StudentDao {
@@ -39,8 +38,6 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public void insertList(List<SimpleStudent> students) {
         String sql = "INSERT INTO student(name) VALUE (:studentName)";
-
-        Map<String, Object> map = new HashMap<>();
 
         MapSqlParameterSource[] mapSqlParameterSources = new MapSqlParameterSource[students.size()];
 
@@ -79,8 +76,7 @@ public class StudentDaoImpl implements StudentDao {
     public List<SimpleStudent> select() {
         String sql = "SELECT id, name FROM student";
         Map<String, Object> map = new HashMap<>();
-        List<SimpleStudent> students = namedParameterJdbcTemplate.query(sql, map, new SimpleStudenRowMapper());
-        return students;
+        return namedParameterJdbcTemplate.query(sql, map, new SimpleStudenRowMapper());
     }
 
     @Override
@@ -91,8 +87,6 @@ public class StudentDaoImpl implements StudentDao {
         map.put("studentId", studentId);
 
         List<SimpleStudent> students = namedParameterJdbcTemplate.query(sql, map, new SimpleStudenRowMapper());
-
-        Optional<List<SimpleStudent>> optionalSimpleStudents = Optional.of(students);
 
         return students.isEmpty() ? null : students.get(0);
     }
