@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,10 +60,10 @@ public class MyController {
     }
 
     @RequestMapping("/user")
-    public Student user() {
-        Student student = new Student();
-        student.name = "Judy";
-        return student;
+    public CompleteStudent user() {
+        CompleteStudent completeStudent = new CompleteStudent();
+        completeStudent.name = "Judy";
+        return completeStudent;
     }
 
     @RequestMapping("/get-method")
@@ -79,7 +78,7 @@ public class MyController {
     }
 
     @RequestMapping("/post-method")
-    public SimpleStudent postMethod(@RequestBody SimpleStudent student){
+    public Student postMethod(@RequestBody Student student){
         return student;
     }
 

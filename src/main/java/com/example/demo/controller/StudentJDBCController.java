@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.SimpleStudent;
+import com.example.demo.Student;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +15,14 @@ public class StudentJDBCController {
     private StudentService studentService;
 
     @PostMapping()
-    public String insert(@RequestBody SimpleStudent simpleStudent) {
-        studentService.insert(simpleStudent);
+    public String insert(@RequestBody Student student) {
+        studentService.insert(student);
         return "run insert sql";
     }
 
     @PostMapping("/batch")
-    public String insertList(@RequestBody List<SimpleStudent> simpleStudents) {
-        studentService.insertList(simpleStudents);
+    public String insertList(@RequestBody List<Student> students) {
+        studentService.insertList(students);
         return "run batch insert sql";
     }
 
@@ -33,18 +33,18 @@ public class StudentJDBCController {
     }
 
     @PutMapping()
-    public String update(@RequestBody SimpleStudent simpleStudent){
-        studentService.update(simpleStudent);
+    public String update(@RequestBody Student student){
+        studentService.update(student);
         return "run update sql";
     }
 
     @GetMapping()
-    public List<SimpleStudent> select() {
+    public List<Student> select() {
         return studentService.select();
     }
 
     @GetMapping("{studentId}")
-    public SimpleStudent select(@PathVariable Integer studentId) {
+    public Student select(@PathVariable Integer studentId) {
         return studentService.getById(studentId);
     }
 

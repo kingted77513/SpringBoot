@@ -1,40 +1,37 @@
 package com.example.demo;
 
-import java.util.LinkedList;
-import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+@Entity
 public class Student {
-    public Integer getId() {
-        return id;
-    }
-
-    Integer id;
-
     public String getName() {
         return name;
     }
 
-    String name;
-    Double score;
-    Boolean graduate;
-    Integer age;
-    List<String> courseList = new LinkedList<>();
-    Pet pet;
-    List<Pet> petList = new LinkedList<>();
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public static void main(String[] args) {
-        Student student = new Student();
-        student.id = 123;
-        student.name = "Judy";
-        student.score = 95.5;
-        student.graduate = true;
-        student.age = null;
-        student.courseList.add("math");
-        student.courseList.add("english");
+    public Integer getId() {
+        return id;
+    }
 
-        student.pet = new Pet("black", 5);
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-        student.petList.add(new Pet("white", 3));
-        student.petList.add(new Pet("orange", 1));
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank
+    private String name;
+
+    @Override
+    public String toString(){
+        return "id = " + id + ", name = " + name;
     }
 }

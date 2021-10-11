@@ -1,7 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.SimpleStudenRowMapper;
-import com.example.demo.SimpleStudent;
+import com.example.demo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -20,7 +20,7 @@ public class StudentDaoImpl implements StudentDao {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
-    public void insert(SimpleStudent student) {
+    public void insert(Student student) {
         String sql = "INSERT INTO student(name) VALUE (:studentName)";
 
         Map<String, Object> map = new HashMap<>();
@@ -36,13 +36,13 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public void insertList(List<SimpleStudent> students) {
+    public void insertList(List<Student> students) {
         String sql = "INSERT INTO student(name) VALUE (:studentName)";
 
         MapSqlParameterSource[] mapSqlParameterSources = new MapSqlParameterSource[students.size()];
 
         for (int i = 0 ; i < students.size() ; i++) {
-            SimpleStudent student = students.get(i);
+            Student student = students.get(i);
 
             mapSqlParameterSources[i] = new MapSqlParameterSource();
             mapSqlParameterSources[i].addValue("studentName", student.getName());
@@ -62,7 +62,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public void update(SimpleStudent student) {
+    public void update(Student student) {
         String sql = "UPDATE student SET name=:studentName WHERE id=:studentId";
 
         Map<String, Object> map = new HashMap<>();
@@ -73,20 +73,20 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public List<SimpleStudent> select() {
+    public List<Student> select() {
         String sql = "SELECT id, name FROM student";
         Map<String, Object> map = new HashMap<>();
         return namedParameterJdbcTemplate.query(sql, map, new SimpleStudenRowMapper());
     }
 
     @Override
-    public SimpleStudent getById(Integer studentId) {
+    public Student getById(Integer studentId) {
         String sql = "SELECT id, name FROM student WHERE id = :studentId";
 
         Map<String, Object> map = new HashMap<>();
         map.put("studentId", studentId);
 
-        List<SimpleStudent> students = namedParameterJdbcTemplate.query(sql, map, new SimpleStudenRowMapper());
+        List<Student> students = namedParameterJdbcTemplate.query(sql, map, new SimpleStudenRowMapper());
 
         return students.isEmpty() ? null : students.get(0);
     }

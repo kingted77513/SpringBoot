@@ -5,10 +5,10 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SimpleStudenRowMapper implements RowMapper<SimpleStudent> {
+public class SimpleStudenRowMapper implements RowMapper<Student> {
     @Override
-    public SimpleStudent mapRow(ResultSet resultSet, int i) throws SQLException {
-        SimpleStudent student = new SimpleStudent();
+    public Student mapRow(ResultSet resultSet, int i) throws SQLException {
+        Student student = new Student();
         student.setId(resultSet.getInt("id"));
         student.setName(resultSet.getString("name"));
         return student;

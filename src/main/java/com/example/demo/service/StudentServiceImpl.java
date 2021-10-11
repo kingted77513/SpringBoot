@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.SimpleStudent;
+import com.example.demo.Student;
 import com.example.demo.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,12 +14,12 @@ public class StudentServiceImpl implements StudentService{
     private StudentDao studentDao;
 
     @Override
-    public void insert(SimpleStudent student) {
+    public void insert(Student student) {
         studentDao.insert(student);
     }
 
     @Override
-    public void insertList(List<SimpleStudent> students) {
+    public void insertList(List<Student> students) {
         studentDao.insertList(students);
     }
 
@@ -29,17 +29,17 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void update(SimpleStudent student) {
+    public void update(Student student) {
         studentDao.update(student);
     }
 
     @Override
-    public List<SimpleStudent> select() {
+    public List<Student> select() {
         return studentDao.select();
     }
 
     @Override
-    public SimpleStudent getById(Integer studentId) {
+    public Student getById(Integer studentId) {
         return studentDao.getById(studentId);
     }
 }

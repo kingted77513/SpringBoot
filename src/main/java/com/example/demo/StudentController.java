@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.SimpleStudent;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -11,16 +10,16 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
-    final private List<SimpleStudent> studentList = new LinkedList<>();
+    final private List<Student> studentList = new LinkedList<>();
 
     @PostMapping()
-    public String create(@RequestBody @Valid SimpleStudent student) {
+    public String create( @Valid Student student) {
         this.studentList.add(student);
         return "create student successful";
     }
 
     @GetMapping("/{id}")
-    public SimpleStudent read(@PathVariable Integer id) {
+    public Student read(@PathVariable Integer id) {
         return studentList.stream()
                 .filter(student -> id.equals(student.getId()))
                 .findFirst()
@@ -28,13 +27,13 @@ public class StudentController {
     }
 
     @GetMapping()
-    public List<SimpleStudent> read() {
+    public List<Student> read() {
         return this.studentList;
     }
 
     @PutMapping("/{id}")
     public String update(@PathVariable Integer id,
-                         @RequestBody SimpleStudent student) {
+                         @RequestBody Student student) {
         for (int index = 0 ; index < studentList.size() ; index++) {
             if (studentList.get(index).getId().equals(id)){
                 studentList.set(index, student);

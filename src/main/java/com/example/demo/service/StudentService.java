@@ -1,19 +1,19 @@
 package com.example.demo.service;
 
-import com.example.demo.SimpleStudent;
+import com.example.demo.Student;
 
 import java.util.List;
 
 public interface StudentService {
-    void insert(SimpleStudent student);
+    void insert(Student student);
 
-    void insertList(List<SimpleStudent> students);
+    void insertList(List<Student> students);
 
     void delete(Integer studentId);
 
-    void update(SimpleStudent student);
+    void update(Student student);
 
-    List<SimpleStudent> select();
+    List<Student> select();
 
-    SimpleStudent getById(Integer studentId);
+    Student getById(Integer studentId);
 }
