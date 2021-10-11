@@ -12,7 +12,7 @@ class CalculatorTest {
         Calculator calculator = new Calculator();
         int result = calculator.add(1, 2);
 
-        assertEquals(3, result);
+        assertEquals(3, result, "加法有問題");
     }
 
 }
