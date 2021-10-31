@@ -23,9 +23,9 @@ class StudentServiceImplMockTest {
         mockStudent.setId(1);
         mockStudent.setName("I am mock");
 
-        Mockito.when(studentDao.getById(1)).thenReturn(mockStudent);
+        Mockito.when(studentDao.getById(Mockito.any())).thenReturn(mockStudent);
 
-        final Student student = studentService.getById(1);
+        final Student student = studentService.getById(100);
         Assertions.assertNotNull(student);
         Assertions.assertEquals("I am mock", student.getName());
     }
