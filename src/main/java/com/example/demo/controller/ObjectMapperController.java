@@ -18,6 +18,11 @@ public class ObjectMapperController {
         String jsonResult = objectMapper.writeValueAsString(user);
         System.out.println("jsonResult = " + jsonResult);
 
+        String json = "{\"id\":3,\"name\":\"Amy\"}";
+        User userResult = objectMapper.readValue(json, User.class);
+        System.out.println("user id: " + userResult.getId());
+        System.out.println("user name: " + userResult.getName());
+
         return "convert success";
     }
 }
