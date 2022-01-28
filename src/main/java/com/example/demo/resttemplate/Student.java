@@ -1,7 +1,22 @@
 package com.example.demo.resttemplate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Student {
     Integer id;
+    String name;
+
+    @JsonProperty("contact_phone")
+    String contactPhone;
+
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
 
     public Integer getId() {
         return id;
@@ -18,6 +33,4 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
-
-    String name;
 }
