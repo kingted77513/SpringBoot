@@ -53,4 +53,21 @@ public class RestTemplateController {
 
         return "getForObject success";
     }
+
+    @GetMapping("/postForObject")
+    public String postForObject(){
+
+        Student requestBody = new Student();
+        requestBody.setName("John");
+
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://mocki.io/v1/3275feb1-25cc-4cc6-8d09-726866048e59";
+        Student student = restTemplate.postForObject(url, requestBody, Student.class);
+
+        System.out.println("student id: "  + student.getId());
+        System.out.println("student name: " + student.getName());
+        System.out.println("student phone: " + student.getContactPhone());
+
+        return "getForObject success";
+    }
 }
