@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.controller;
 
+import com.example.demo.Student;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
